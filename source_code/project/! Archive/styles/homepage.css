@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins";
+}
+body
+{
+	overflow-x: hidden;
+}
+nav
+{
+	background-color: #333;
+	color: #fff;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	background-attachment: fixed;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+}
+nav h1 a:hover
+{
+	color: white;
+}
+nav ul
+{
+	list-style-type: none;
+	margin: 0;
+}
+nav li
+{
+	display: inline-block;
+	margin: 10px;
+}
+.tabs
+{
+	float: right;
+	margin: 1.25%;
+}
+nav a
+{
+	color: #fff;
+	text-decoration: none;
+}
+nav a:hover
+{
+	color: blue;
+	text-decoration: none;
+}
+.welcome-message
+{
+	z-index: 10;
+}
+.back-image
+{
+	background-image: url("../images/homepage-background.jpg");
+	width: 100%;
+	height: 100vh;
+	filter: saturate(2);
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.worldmap
+{
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+.worldmap img
+{
+	width: 60%;
+}
+.container
+{
+	margin-top: 25%;
+	background-color: whitesmoke;
+	border-radius: 25px;
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+	margin: 10%;
+	padding: 5%;
+}
+.form
+{
+	position: relative;
+	/*! display: inline-block; */
+	margin: 0 7%;
+	z-index: 0;
+}
+.form-outline
+{
+	padding: 2%;
+	display: flex;
+	margin: 0 2%;
+	background-color: #333;
+	color: white;
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+	border-radius: 25px;
+}
+.form label
+{
+	/*! margin: 2%; */
+	height: 100%;
+}
+.form .input-box
+{
+	
+	margin: 0 2%;
+}
+.input-box input
+{
+	/*! height: 50%; */
+	/*! width: 100%; */
+	/*! padding: 1%; */
+	/*! font-weight: 500; */
+	/*! font-size: medium; */
+	text-align: center;
+	outline: none;
+	transition: all 0.3s ease;
+}
+.btn-search
+{
+	color: #ffffff;
+	background: #2600ff;
+	border-radius: 6px;
+	padding: 0 0.5%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+	/*! font-size: large; */
+	font-weight: 500;
+}
+.btn-search:hover
+{
+	background: #080074;
+}
+.section
+{
+	text-align: center;
+}
+.swiffy-slider
+{
+    height: calc(1345px-53.09);
+}
+.swiffy-slider img
+{
+    height:35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-repeat: no-repeat;
+    object-fit: cover;
+    box-shadow: 0 5px 100px rgba(0,0,0, 0.5);
+}
+.swiffy-slider li
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slider-indicators button
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.back-to-top
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+}
+.back-to-top button
+{
+	color: #ffffff;
+	background: #2600ff;
+	border-radius: 6px;
+	padding: 0.5%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+	display: block;
+	font-size: large;
+	font-weight: 500;
+	margin: 2%;
+}
+.back-to-top button:hover
+{
+	background: #080074;
+}
+.back-to-top a
+{
+	color: #ffffff;
+	background: #2600ff;
+	border-radius: 6px;
+	padding: 0.5%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+	display: block;
+	font-size: large;
+	font-weight: 500;
+	margin: 2%;
+	text-decoration: none;
+	border-style: groove;
+}
+.back-to-top a:hover
+{
+	background: #080074;
+}
