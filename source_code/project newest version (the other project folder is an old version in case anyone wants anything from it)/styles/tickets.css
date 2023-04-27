@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*
+{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins" , sans-serif;
+}
+body
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 30px;
+	margin-top: 2%;
+	background-image: url("../images/airplane-passenger-aircraft-chair-airport-wallpaper-preview.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;  
+	background-size: cover;
+}
+.container
+{
+	position: relative;
+	max-width: 800px;
+	width: 60%;
+	background: #ffffff;
+	padding: 3% 2.5%;
+	margin-top: 10px;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	border-radius: 25px;
+	height: 150%;
+}
+.header
+{
+	position:absolute;
+	bottom: 90%;
+	font-size: x-large;
+	width:100%;
+	height: 15%;
+	margin-bottom: auto;
+	padding: 50px;
+	text-align: center;
+	font-weight: bolder;
+}
+a:link
+{
+	color: black;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:visited
+{
+	color: black;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:hover
+{
+	color: #2600ff;
+	background-color: transparent;
+	text-decoration: none;
+}
+a:active
+{
+	color: #080074;
+	background-color: transparent;
+	text-decoration: none;
+	transition: all 0.4 ease;
+}
+.container-title
+{
+	text-align: center;
+}
+.field
+{
+	font-size: larger;
+	font-weight: 500;
+	overflow: auto;
+	height: 100%;
+}
+.field-title
+{
+	font-size: larger;
+}
+.field-content
+{
+	padding-left: 10px;
+	padding-bottom: 3%;
+	font-size: large;
+	font-weight: 450;
+	color: #222;
+}
+.firstline
+{
+	display: flex;
+}
+.name
+{
+	flex: 1;
+}
+.id
+{
+	flex-shrink: 1;
+}
+.id-content
+{
+	text-align: center;
+	padding: 0 10px;
+}
+.ticket
+{
+    text-align: center;
+    border: 2px solid #000000;
+    margin-top: 2%;
+    display: flex;
+}
+.ticket .from
+{
+    flex: 33.33%;
+}
+.ticket .to
+{
+    flex: 33.33%;
+}
+.ticket .date
+{
+    flex: 33.33%;
+}
+.ticket-title
+{
+    font-weight: bold;
+}
