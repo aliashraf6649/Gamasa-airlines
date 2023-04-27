@@ -1,0 +1,134 @@
+:root {
+    --primary-color: #1da1f2;
+    --secondary-color: #d8d8d8;
+}
+
+/* Style the header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    padding: 20px;
+    color: #ffffff;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+footer {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #333333;
+}
+
+.btn-book {
+    background-color: #ff5a5f;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.btn-book:hover {
+    background-color: #ff4449;
+}
+
+.background{
+    background-image: url('https://th.bing.com/th/id/R.b73a905850a6f2a84497f45422199439?rik=xqBDzi1njCV7CQ&pid=ImgRaw&r=0');
+    background-size: cover;
+    }
+        .container {
+      width: 50%;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: transparent;
+      backdrop-filter: blur(20px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      border-radius: 20px;
+        }
+        .red-error {
+        font-family: 'Poppins', sans-serif;
+        background-color: #F5F5F5;
+          color: #FF0000;
+          font-size: 14px;
+          margin-top: 5px;
+        }
+        .labels{
+        font-family: 'Poppins', sans-serif;
+        color : #F5F5F5;
+        margin-top: 5px; 
+        text-align: left;
+        font-size: 40px;
+        }
+        .items{
+            font-family: 'Poppins', sans-serif;
+            color : #F5F5F5;
+        }
+    .button{
+        border-radius: 30px;
+        font-family: 'Poppins', sans-serif;
+        background-color: black;
+        color: #F5F5F5;
+        bottom: 10px;
+        
+    }
+    .button_container{
+       /* width: 0%; /* set the width of the container */
+        margin: auto; /* center the div element horizontally */
+        width:69px;
+        height:30px;
+        
+    }
+    .title{
+        font-family: 'Poppins', sans-serif;
+        font-size: 35px;
+        position: absolute;
+        top: -30;
+        left: 50%;
+        transform: translateX(-50%);
+        color:#251d1d;
+    }
+select {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 50px;
+        background-color: #f5f5f5;
+        font-family: 'Poppins', sans-serif;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        color: #333;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0l5 5 5-5z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        font-size: 16px;
+        background-position-x: calc(100% - 1rem);
+        background-position-y: center;
+      }
+.containerBlack{
+    font-family: 'Poppins', sans-serif;
+    color : #333;
+    margin-top: 5px; 
+    text-align: left;
+    font-size: 30px;
+    width: 50%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
