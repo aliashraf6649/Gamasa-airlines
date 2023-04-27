@@ -1,10 +1,7 @@
 <?php
+require_once "config.php";
 session_start();
 $errors = ['going' => '', 'return' => ''];   //intitalzing errors as empty
-$connect = mysqli_connect('localhost', 'atya', 'atya', 'um'); //connecting to the database
-if(!$connect){
-  echo "Connection Error:" . mysqli_connect_error();   //if there's a error it'll be printed on the screen
-}
 
 $cookieValue = $_COOKIE["from-to-booking"];      //the cookie from the last page "Booking-Airlines.php" which includes the from and to countries
 $from_to_data = json_decode($cookieValue, true); //decoding the script to return as array

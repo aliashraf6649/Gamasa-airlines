@@ -1,9 +1,5 @@
 <?php
-$connect = mysqli_connect('localhost', 'atya', 'atya', 'um'); //connecting to the database
-if(!$connect){
-  echo "Connection Error:" . mysqli_connect_error();   //if there's a error it'll be printed on the screen
-}
-
+require_once "config.php";
 $cookieValue = $_COOKIE["ticket"];      //the cookie from the last page "trip-search.php" which includes the from and to countries
 $ticket_data = json_decode($cookieValue, true); //decoding the script to return as array
 
@@ -36,11 +32,7 @@ if($type == 'Round')
     echo "<br><br>return trip data<br>";
     echo "from: ".$toValue."<br>to: ".$fromValue."<br>ID: ".$returnID."<br>Date-Time: ".$returnDate;
 }
-
-
-
 ?>
-
 
 <HTML>
 <head>

@@ -1,10 +1,9 @@
 <?php
-
+require_once "config.php";
 #get sends data in th url
 #post sends data in the request header (HIDDEN)
 $errors = array('class' => '', 'from' => '', 'to' => '','type' => '');   //to initialize array for errors to be put in
 $from = $email = $destination = '';  //declaring them by default as empty strings
-$conn = mysqli_connect('localhost', 'atya', 'atya', 'um') or die($conn);
 if(isset($_POST['submit'])){  //if submit was pushed
     if (empty($_POST['class']))  
     {
@@ -24,7 +23,7 @@ if(isset($_POST['submit'])){  //if submit was pushed
     {
         $toAirport=trim($_POST['to']);                    
         $toQuery="SELECT * FROM airport WHERE  `airport_name` = '$toAirport'";     
-        $toResult=mysqli_query($conn, $toQuery);                                
+        $toResult=mysqli_query($database, $toQuery);                                
         
         if(mysqli_num_rows($toResult) == 0 )
         {
@@ -45,7 +44,7 @@ if(isset($_POST['submit'])){  //if submit was pushed
     {
         $fromAirport=trim($_POST['from']);
         $fromQuery="SELECT * FROM airport WHERE airport_name = '$fromAirport'"; 
-        $fromResult=mysqli_query($conn, $fromQuery);
+        $fromResult=mysqli_query($database, $fromQuery);
 
         if(mysqli_num_rows($fromResult) == 0 )
         {

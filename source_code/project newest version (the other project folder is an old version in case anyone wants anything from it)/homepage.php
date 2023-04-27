@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
-$cool=array('Cairo'=>'airport');
-$javacool=json_encode($cool);
+require_once "config.php";
 session_start();
 if(isset($_SESSION['user']))
 	$user=$_SESSION['user'];
@@ -16,7 +15,6 @@ if(isset($_POST['logout']))
 
 $errors = array('class' => '', 'from' => '', 'to' => '', 'type' => '', 'ddate' =>'', 'rdate' => '');   //to initialize array for errors to be put in
 $from = $email = $destination = '';  //declaring them by default as empty strings
-$conn = mysqli_connect('localhost', 'atya', 'atya', 'um') or die($conn);
 
 if(isset($_POST['submit']))  //if submit was pushed
 { 
@@ -40,7 +38,7 @@ if(isset($_POST['submit']))  //if submit was pushed
     {
         $toCountry=trim($_POST['to']);                    
         $toQuery="SELECT * FROM airport WHERE country = '$toCountry'";     
-        $toResult=mysqli_query($conn, $toQuery);                                
+        $toResult=mysqli_query($database, $toQuery);                                
         
         if(mysqli_num_rows($toResult) == 0 )
         {
@@ -64,7 +62,7 @@ if(isset($_POST['submit']))  //if submit was pushed
     {
         $fromCountry=trim($_POST['from']);
         $fromQuery="SELECT * FROM airport WHERE country = '$fromCountry'"; 
-        $fromResult=mysqli_query($conn, $fromQuery);
+        $fromResult=mysqli_query($database, $fromQuery);
 
         if(mysqli_num_rows($fromResult) == 0 )
         {

@@ -1,4 +1,5 @@
 <?php
+require_once "config.php";
 $cookieValue = $_COOKIE["from-to"];
 $from_to_data = json_decode($cookieValue, true);
 
@@ -11,11 +12,10 @@ if ($type == "Round")
     $retDate = $from_to_data['rdate'];
 }
 
-$connect = mysqli_connect('localhost', 'atya', 'atya', 'um') or die($connect);
 $Tdata = "SELECT * FROM trips WHERE `departing_country` = '$from_country' AND `destination_country` = '$destination_country' AND `date` = '$depDate'";  //getting the going trip data
 $Rdata = "SELECT * FROM trips WHERE `destination_country` = '$from_country' AND `departing_country` = '$destination_country' AND `date` > '$depDate' ";
-$result = mysqli_query($connect, $Tdata);   
-$rresult = mysqli_query($connect, $Rdata);  
+$result = mysqli_query($database, $Tdata);   
+$rresult = mysqli_query($database, $Rdata);  
 
 $trips = mysqli_fetch_all($result);   //the result of going trips in array 
 $Rtrips = mysqli_fetch_all($rresult); //the result of returning trips in array 

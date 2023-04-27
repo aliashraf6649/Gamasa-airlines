@@ -1,7 +1,0 @@
-1. remember to change the  name, password & database name in the connection in all the files
-    much like this
-    ```
-     $conn = mysqli_connect('localhost', 'atya', 'atya', 'um') or die($conn);
-    ```
-2. in the database table folder import all the tables into the database
-3. good luck
