@@ -227,14 +227,6 @@ if(isset($_POST['submit']))  //if submit was pushed
 				<input type="date" name="rdate" min = "<?php echo date('Y-m-d'); ?>">
 				<div> <?php echo $errors['rdate']; ?> </div>
 			</div></div><br>
-			
-
-			<!--
-			<button id="se" type="submit"><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="sea">
-			<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-			<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-			</svg></button>
-			-->
 			<button id="se" type="submit" class="btn-search" name="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</fieldset>
 	</form>
@@ -243,38 +235,32 @@ if(isset($_POST['submit']))  //if submit was pushed
 			<h1 class="recommended title">Recommended Places To Visit This Month</h1>
 			<div class="slideshow-container">
 	<div class="mySlides fade">
-		<a href="" class="slide-link">
-			<div class="numbertext">1 / 3</div>
-			<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
-			<h3 class="slideshow title">Machu Picchu, Peru</h3>
-		</a>
-		<!--<p class="slideshow-text">The citadel of Machu Picchu is an iconic symbol of pre-Columbian Peru located in the Eastern Cordillera of southern Peru on a mountain ridge.
+		<div class="numbertext">1 / 3</div>
+		<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
+		<h3 class="slideshow title">Machu Picchu, Peru</h3>
+		<p class="slideshow-text">The citadel of Machu Picchu is an iconic symbol of pre-Columbian Peru located in the Eastern Cordillera of southern Peru on a mountain ridge.
 		It is the most familiar icon of the Inca Empire, often referred to as the "Lost City of the Incas".
 		In 2007, Machu Picchu was voted one of the New Seven Wonders of the World in a worldwide internet poll. 
-		</p>-->
+		</p>
 	</div>
 	<div class="mySlides fade">
-		<a href="" class="slide-link">
-			<div class="numbertext">2 / 3</div>
-			<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
-			<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
-		</a>
-		<!--<p class="slideshow-text">The Costa del Sol, meaning "Coast of the Sun" is a region in the south of Spain,
+		<div class="numbertext">2 / 3</div>
+		<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
+		<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
+		<p class="slideshow-text">The Costa del Sol, meaning "Coast of the Sun" is a region in the south of Spain,
 		located on the coast of the Mediterranean Sea. It is known for its beautiful sandy beaches with warm clear waters of which there are dozens to choose from,
 		so you're bound to find one that suits your preferences. Whether you're looking for a quiet secluded spot or a lively beach with water sports, you'll find plenty of options.
-		</p>-->
+		</p>
 	</div>
 	<div class="mySlides fade">
-		<a href="" class="slide-link">
-			<div class="numbertext">3 / 3</div>
-			<img src="../images/recommended locations/portugal-nazare-estremadura.jpg" alt="Nazare Estremadura"/>
-			<h3 class="slideshow title">Nazar&#233; Estremadura, Portugal</h3>
-		</a>
-		<!--<p class="slideshow-text">Nazar&#233; is a town on the Atlantic coast of Portugal, located in Estremadura.
+		<div class="numbertext">3 / 3</div>
+		<img src="../images/recommended locations/portugal-nazare-estremadura.jpg" alt="Nazare Estremadura"/>
+		<h3 class="slideshow title">Nazar&#233; Estremadura, Portugal</h3>
+		<p class="slideshow-text">Nazar&#233; is a town on the Atlantic coast of Portugal, located in Estremadura.
 		It is known for its beatiful beaches, world-class surfing, and traditional fishing heritage.
 		The main beach in Nazar&#233; is Praia da Nazar&#233;, which is home to the famous Nazar&#233; Canyon that creates some of the biggest waves in the world.
 		In addition to its beaches, Nazar&#233; also has a historic center with charming narrow streets, traditional houses and an iconic lighthouse that offers stunning views of the coastline. 
-		</p>-->
+		</p>
 	</div>
 	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 	<a class="next" onclick="plusSlides(1)">&#10095;</a>
