@@ -36,7 +36,8 @@ button
 	transition: all 0.4s ease;
 	font-size: medium;
 	font-weight: 500;
-	width: 100%;
+	width: 70%;
+	max-width: 800px;
 }
 form{
 	width: 50%;
