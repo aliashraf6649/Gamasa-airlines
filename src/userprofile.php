@@ -11,7 +11,7 @@ if(isset($_POST['tickets']))
 if(isset($_POST['logout']))
 {
 	session_destroy();
-	header('location: welcome.php');
+	header('location: logout.php');
 	exit;
 }
 ?>
