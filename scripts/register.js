@@ -88,7 +88,7 @@ elements['email'].addEventListener("blur", (event)=>
 });
 elements['pword1'].addEventListener("input", ()=>
 {
-	if(elements['pword1'].value.length>=8 && elements['pword1'].value)
+	if(elements['pword1'].value.length>8 && elements['pword1'].value)
 	{
 		color(elements['pword1'], "lightgreen", "green")
 		hideError(elements['pword1']);
