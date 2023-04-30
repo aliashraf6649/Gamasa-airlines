@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'&&isset($_POST['submit']))
 					*Please Enter Your Last Name
 				</span>
 				<div class="input-box">
-					<input type="text" name="bdate" class="form-control" placeholder="Birth Date">
+					<input type="text" name="bdate" class="form-control" max="<?php echo (date('Y')-18).'-'.date('m-d');?>" placeholder="Birth Date">
 				</div>
 				<span class="error" id="bdate">
 					*Please Enter Your Birth-Date
