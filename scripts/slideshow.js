@@ -48,14 +48,55 @@ function currentSlide(n, id)
 }
 */
 
-//new code
-let slides=document.querySelectorAll('.slideshow');
-let currentSlide=0;
-let slideInterval=setInterval(nextSlide, 5000);
-
-function nextSlide()
 {
-	slides[currentSlide].className=' ';
+	let slideshow1=document.querySelectorAll('.slideshow1-slides');
+	let slideshow2=document.querySelectorAll('.slideshow2-slides');
+	let slideshow1_dots=document.querySelectorAll('.slideshow1-dot');
+	let slideshow2_dots=document.querySelectorAll('.slideshow2-dot');
+	var slideshows=[slideshow1, slideshow2];
+	var slideshows_dots=[slideshow1_dots, slideshow2_dots];
+}//curly braces are used to free slideshow1 & slideshow2 from memory
+var slide_index=[0,0];
+/*
+let slide1_interval=setInterval(autoSlide1, 5000);
+let slide2_interval=setInterval(autoSlide2, 5000);
+function autoSlide1()
+{
+	slideshows[current][current].className=' ';
+	current=(current+1)%slides.length;
+	slides[current].className='active';
+}
+function autoSlide2()
+{
+	element[currentSlide].className=' ';
 	currentSlide=(currentSlide+1)%slides.length;
 	slides[currentSlide].className='active';
+}
+*/
+slideshows[0][0].className+=' active';
+slideshows[1][0].className+=' active';
+slideshows_dots[0][0].className+=' active';
+slideshows_dots[1][0].className+=' active';
+function slide_change(slideshow, offset)
+{
+	if(offset<0)
+		offset+=slideshows[slideshow].length;
+	slideshows[slideshow][slide_index[slideshow]].className=
+	slideshows[slideshow][slide_index[slideshow]].className.replace(' active','');
+	slideshows_dots[slideshow][slide_index[slideshow]].className=
+	slideshows_dots[slideshow][slide_index[slideshow]].className.replace(' active','');
+	slide_index[slideshow]=(slide_index[slideshow]+offset)%slideshows[slideshow].length;
+	slideshows[slideshow][slide_index[slideshow]].className+=' active';
+	slideshows_dots[slideshow][slide_index[slideshow]].className+=' active';
+}
+function slide_set(slideshow, slide)
+{
+	slide--;
+	slideshows[slideshow][slide_index[slideshow]].className=
+	slideshows[slideshow][slide_index[slideshow]].className.replace(' active','');
+	slideshows_dots[slideshow][slide_index[slideshow]].className=
+	slideshows_dots[slideshow][slide_index[slideshow]].className.replace(' active','');
+	slide_index[slideshow]=slide;
+	slideshows[slideshow][slide_index[slideshow]].className+=' active';
+	slideshows_dots[slideshow][slide_index[slideshow]].className+=' active';
 }

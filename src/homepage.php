@@ -134,6 +134,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 			if(isset($user))
 				echo '<span class="welcome-message">Welcome, '.$user['fname'].'!</span>';
 			?>
+			<span class="tabs">
 				<?php 
 				if(isset($user))
 				{
