@@ -3,7 +3,8 @@ session_start();
 require_once "config.php";
 $cookieValue = $_COOKIE["from-to"];
 $from_to_data = json_decode($cookieValue, true);
-$user = $_SESSION['user'];
+if(isset($_SESSION['user']))
+    $user = $_SESSION['user'];
 
 $from_country = $from_to_data['from'];
 $destination_country =$from_to_data['to'];
@@ -49,7 +50,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 		?>
 		<span class="tabs">
 			<li><a href="tickets.php"><i class="fa fa-book" aria-hidden="true"></i> Booked Tickets</a></li>
-			<li><a href="feedback.php"><i class="fa fa-phone" aria-hidden="true"></i> Contact us</a></li>
+			<li><a href="feedback.php"><i class="fa fa-envelope" aria-hidden="true"></i> Contact us</a></li>
 			<li><a href="homepage.php#about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
 			<?php 
 			if(isset($user))
