@@ -38,7 +38,7 @@ if(isset($_POST['submit']))  //if submit was pushed
         $toQuery="SELECT * FROM airport WHERE country = '$toCountry'";     
         $toResult=mysqli_query($database, $toQuery);                                
         
-        if(mysqli_num_rows($toResult) == 0 )
+        if(mysqli_num_rows($toResult) == 0)
         {
             $errors['to'] = "'".$_POST['to']."' is not a country".'<br> <br>';
         }
@@ -100,7 +100,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 		$from_to_type = ['from' => $_POST['from'], 'to' => $_POST['to'],
 		'type' => $_POST['type'], 'class' => $_POST['class']];
 		$from_to_encode = json_encode($from_to_type);
-		setcookie("from-to", $from_to_encode,0,"/"); // Cookie expires as soon session ends IE; user logs out
+		setcookie("from-to", $from_to_encode, 0, "/"); // Cookie expires as soon session ends IE; user logs out
 		header("Location: homepageResults.php");
 		exit();
 	}
@@ -114,17 +114,15 @@ if(isset($_POST['submit']))  //if submit was pushed
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/imagemapster/1.5.4/jquery.imagemapster.min.js"></script>
 	<script defer type="text/javascript"  src="../scripts/worldmap.js"></script>
-	<script defer type="text/javascript" src="../scripts/homepage.js"></script>
+	<script defer type="text/javascript" src="../scripts/slideshow.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
 	<link rel="stylesheet" type="text/css" href="../styles/homepage.css">
 	<script src="../scripts/autocompletecallhomepage.js"></script>
 	<script src="../scripts/returndateslide.js"></script> <!--edit-->
-
-	<!--<link rel="stylesheet" href="css/bootstrap.css">-->
 	<title>Gamasa Airlines</title>
 </head>
 <body>
@@ -247,7 +245,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 		<div class="recommended section">
 			<h1 class="recommended title">Recommended Places To Visit This Month</h1>
 			<div class="slideshow-container" style="height: 108vh;">
-				<div class="slideshow-slides1">
+				<div class="slideshow1-slides">
 					<div class="numbertext">1 / 3</div>
 					<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
 					<h3 class="slideshow title">Machu Picchu, Peru</h3>
@@ -257,7 +255,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 						In 2007, Machu Picchu was voted one of the New Seven Wonders of the World in a worldwide internet poll. 
 					</p>
 				</div>
-				<div class="slideshow-slides1">
+				<div class="slideshow1-slides">
 					<div class="numbertext">2 / 3</div>
 					<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
 					<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
@@ -267,7 +265,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 						so you're bound to find one that suits your preferences. Whether you're looking for a quiet secluded spot or a lively beach with water sports, you'll find plenty of options.
 					</p>
 				</div>
-				<div class="slideshow-slides1">
+				<div class="slideshow1-slides">
 					<div class="numbertext">3 / 3</div>
 					<img src="../images/recommended locations/portugal-nazare-estremadura.jpg" alt="Nazare Estremadura"/>
 					<h3 class="slideshow title">Nazar&#233; Estremadura, Portugal</h3>
@@ -278,37 +276,40 @@ if(isset($_POST['submit']))  //if submit was pushed
 						In addition to its beaches, Nazar&#233; also has a historic center with charming narrow streets, traditional houses and an iconic lighthouse that offers stunning views of the coastline. 
 					</p>
 				</div>
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				<a class="prev" onclick="slide_change(0, -1)">&#10094;</a>
+				<a class="next" onclick="slide_change(0, 1)">&#10095;</a>
 			</div>
-			<div class="slideshow-dots">
-				<span class="dot" onclick="currentSlide(1)"></span>
-				<span class="dot" onclick="currentSlide(2)"></span>
-				<span class="dot" onclick="currentSlide(3)"></span>
+			<div class="slideshow1-dots">
+				<span class="slideshow1-dot" onclick="slide_set(0, 1)"></span>
+				<span class="slideshow1-dot" onclick="slide_set(0, 2)"></span>
+				<span class="slideshow1-dot" onclick="slide_set(0, 3)"></span>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="visited section">
-			<h1 class="visited title">Recommended Places To Visit This Month</h1>
-			<div class="slideshow-container" style="height: 85vh;">
-				<div class="slideshow-slides2">
-					<div class="numbertext">1 / 2</div>
-					<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
-					<h3 class="slideshow title">Machu Picchu, Peru</h3>
+			<h1 class="visited title">Most Visited Places</h1>
+			<div class="slideshow-container" style="height: 72vh;">
+				<div class="slideshow2-slides">
+					<a class="slideshow-link" href="visited places/cairo.php">
+						<div class="numbertext">1 / 2</div>
+						<img src="../images/recommended locations/cairo-egypt.jpg" alt="Cairo, Egypt"/>
+						<h3 class="slideshow2 title">Cairo, Egypt</h3>
+					</a>
 				</div>
-				<div class="slideshow-slides2">
-					<div class="numbertext">2 / 2</div>
-					<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
-					<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
+				<div class="slideshow2-slides">
+					<a class="slideshow-link" href="visited places/riyadh.php">
+						<div class="numbertext">2 / 2</div>
+						<img src="../images/recommended locations/riyadh-saudi.jpg" alt="Riyadh, Saudi Arabia"/>
+						<h3 class="slideshow2 title">Riyadh, Saudi Arabia</h3>
+					</a>
 				</div>
-				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				<a class="prev" onclick="slide_change(1, -1)">&#10094;</a>
+				<a class="next" onclick="slide_change(1, 1)">&#10095;</a>
 			</div>
-			<div class="slideshow-dots">
-				<span class="dot" onclick="currentSlide(1)"></span>
-				<span class="dot" onclick="currentSlide(2)"></span>
-				<span class="dot" onclick="currentSlide(3)"></span>
+			<div class="slideshow2-dots">
+				<span class="slideshow2-dot" onclick="slide_set(1, 1)"></span>
+				<span class="slideshow2-dot" onclick="slide_set(1, 2)"></span>
 			</div>
 		</div>
 	</div>
