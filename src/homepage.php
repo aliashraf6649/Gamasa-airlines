@@ -96,15 +96,14 @@ if(isset($_POST['submit']))  //if submit was pushed
 	    }
     }
     if (!array_filter($errors))
-    {
-        $from_to_type = ['from' => $_POST['from'], 'to' => $_POST['to'],
-		'type' => $_POST['type'], 'class' => $_POST['class'], 'ddate' => $_POST['ddate'], 'rdate' => $_POST['rdate']];
-        $from_to_encode = json_encode($from_to_type);
-        setcookie("from-to", $from_to_encode, time()+3600); // Cookie expires in 1 hour
-
-        header("Location: homepageResults.php");
-        exit();
-    } 
+	{
+		$from_to_type = ['from' => $_POST['from'], 'to' => $_POST['to'],
+		'type' => $_POST['type'], 'class' => $_POST['class']];
+		$from_to_encode = json_encode($from_to_type);
+		setcookie("from-to", $from_to_encode,0,"/"); // Cookie expires as soon session ends IE; user logs out
+		header("Location: homepageResults.php");
+		exit();
+	}
 
 }
 
@@ -115,11 +114,12 @@ if(isset($_POST['submit']))  //if submit was pushed
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>                      <!--edit by omar atya-->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/imagemapster/1.5.4/jquery.imagemapster.min.js"></script>
 	<script defer type="text/javascript"  src="../scripts/worldmap.js"></script>
 	<script defer type="text/javascript" src="../scripts/homepage.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
 	<link rel="stylesheet" type="text/css" href="../styles/homepage.css">
 	<script src="../scripts/autocompletecallhomepage.js"></script>
 	<script src="../scripts/returndateslide.js"></script> <!--edit-->
@@ -136,8 +136,12 @@ if(isset($_POST['submit']))  //if submit was pushed
 			if(isset($user))
 				echo '<span class="welcome-message">Welcome, '.$user['fname'].'!</span>';
 			?>
-			<span class="tabs">
-				<li><a href="tickets.php"><i class="fa fa-book" aria-hidden="true"></i> Booked Tickets</a></li>
+				<?php 
+				if(isset($user))
+				{
+					echo '<li><a href="tickets.php"><i class="fa fa-book" aria-hidden="true"></i> Booked Tickets</a></li>';
+				}
+				?>
 				<li><a href="feedback.php"><i class="fa fa-phone" aria-hidden="true"></i> Contact us</a></li>
 				<li><a href="#about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
 				<?php 
@@ -173,104 +177,139 @@ if(isset($_POST['submit']))  //if submit was pushed
 	</div>
 	<form name="form" id="form" action="" class="form" method ="POST">
 			<fieldset class="form-outline">
-
-			<label for="labels">From</label>
+		<div class = "inputs">
+			<div class = "from">
+			<div class="labels">From</div>
 			<div class="input-box" >
 				<input type="text" id="from" name = 'from'>
-                <div> <?php echo $errors['from']; ?> </div> <!--edit by omar atya-->
+                <div> <?php echo $errors['from']; ?> </div> 
 			</div>
-
-			<label for="labels">To</label>
+			</div>
+			<div class = "to">		
+			<div class="labels">To</div>
 			<div class="input-box">
 				<input type="text" id="to" name = 'to'>
-                <div> <?php echo $errors['to']; ?> </div> <!--edit by omar atya-->
+                <div> <?php echo $errors['to']; ?> </div> 
 			</div>
-			
-            <br><div class = "labels">Your Class</div>
-            <label class = 'items'>
+			</div>
+		</div>
+		<div class = "choices">
+            <label class = "labels">Your Class</label>
+            <div class = 'items'>
             <input type="radio" name="class" value="Economy">
             Economy
-            </label><br>
-            <label class = 'items'>
+            </div>
+            <div class = 'items'>
             <input type="radio" name="class" value="Business">
             Business
-            </label><br>
-            <label class = 'items'>
+            </div>
+            <div class = 'items'>
             <input type="radio" name="class" value="First">
             First
-            </label><br>
-            <div> <?php echo $errors['class']; ?> </div><br>
+            </div>
+            <div> <?php echo $errors['class']; ?> </div>
 
 
-			<div class = "labels">Trip type</div>
-			<label class = 'items'>
+			<label class = "labels">Trip type</label>
+			<div class = 'items'>
 			<input type="radio" id='O' name="type" value="One-way">
 			One way
-			</label><br>
-			<label class = 'items'>
+			</div>
+			<div class = 'items'>
 			<input type="radio" id='R' name="type" value="Round">
 			Round
-			</label><br>
-			<div> <?php echo $errors['type']; ?> </div><br>
+			</div>
+			<div> <?php echo $errors['type']; ?> </div>
 
 
+		</div>
 			<label>Depart Date</label>
-			<div id='o'>
+			<div id='o' class = "date">
 			<div class="input-box">
 				<input type="date" name="ddate" min = "<?php echo date('Y-m-d'); ?>">
 				<div> <?php echo $errors['ddate']; ?> </div>
-			</div></div><br>
+			</div>
+			</div>
 
-			<div id='r'>
+			<div id='r' class = "date">
 			<label>Return Date</label>
 			<div class="input-box">
 				<input type="date" name="rdate" min = "<?php echo date('Y-m-d'); ?>">
 				<div> <?php echo $errors['rdate']; ?> </div>
-			</div></div><br>
-			<button id="se" type="submit" class="btn-search" name="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+			</div>
+			</div>
+			<div class = "button">
+			<button id="se" type="submit" class="btn-search" name="submit">Search</button>
+			</div>
 			</fieldset>
 	</form>
 	<div class="container">
 		<div class="recommended section">
 			<h1 class="recommended title">Recommended Places To Visit This Month</h1>
-			<div class="slideshow-container">
-	<div class="mySlides fade">
-		<div class="numbertext">1 / 3</div>
-		<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
-		<h3 class="slideshow title">Machu Picchu, Peru</h3>
-		<p class="slideshow-text">The citadel of Machu Picchu is an iconic symbol of pre-Columbian Peru located in the Eastern Cordillera of southern Peru on a mountain ridge.
-		It is the most familiar icon of the Inca Empire, often referred to as the "Lost City of the Incas".
-		In 2007, Machu Picchu was voted one of the New Seven Wonders of the World in a worldwide internet poll. 
-		</p>
+			<div class="slideshow-container" style="height: 108vh;">
+				<div class="slideshow-slides1">
+					<div class="numbertext">1 / 3</div>
+					<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
+					<h3 class="slideshow title">Machu Picchu, Peru</h3>
+					<p class="slideshow-text">
+						The citadel of Machu Picchu is an iconic symbol of pre-Columbian Peru located in the Eastern Cordillera of southern Peru on a mountain ridge.
+						It is the most familiar icon of the Inca Empire, often referred to as the "Lost City of the Incas".
+						In 2007, Machu Picchu was voted one of the New Seven Wonders of the World in a worldwide internet poll. 
+					</p>
+				</div>
+				<div class="slideshow-slides1">
+					<div class="numbertext">2 / 3</div>
+					<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
+					<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
+					<p class="slideshow-text">
+						The Costa del Sol, meaning "Coast of the Sun" is a region in the south of Spain,
+						located on the coast of the Mediterranean Sea. It is known for its beautiful sandy beaches with warm clear waters of which there are dozens to choose from,
+						so you're bound to find one that suits your preferences. Whether you're looking for a quiet secluded spot or a lively beach with water sports, you'll find plenty of options.
+					</p>
+				</div>
+				<div class="slideshow-slides1">
+					<div class="numbertext">3 / 3</div>
+					<img src="../images/recommended locations/portugal-nazare-estremadura.jpg" alt="Nazare Estremadura"/>
+					<h3 class="slideshow title">Nazar&#233; Estremadura, Portugal</h3>
+					<p class="slideshow-text">
+						Nazar&#233; is a town on the Atlantic coast of Portugal, located in Estremadura.
+						It is known for its beatiful beaches, world-class surfing, and traditional fishing heritage.
+						The main beach in Nazar&#233; is Praia da Nazar&#233;, which is home to the famous Nazar&#233; Canyon that creates some of the biggest waves in the world.
+						In addition to its beaches, Nazar&#233; also has a historic center with charming narrow streets, traditional houses and an iconic lighthouse that offers stunning views of the coastline. 
+					</p>
+				</div>
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+			<div class="slideshow-dots">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+			</div>
+		</div>
 	</div>
-	<div class="mySlides fade">
-		<div class="numbertext">2 / 3</div>
-		<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
-		<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
-		<p class="slideshow-text">The Costa del Sol, meaning "Coast of the Sun" is a region in the south of Spain,
-		located on the coast of the Mediterranean Sea. It is known for its beautiful sandy beaches with warm clear waters of which there are dozens to choose from,
-		so you're bound to find one that suits your preferences. Whether you're looking for a quiet secluded spot or a lively beach with water sports, you'll find plenty of options.
-		</p>
-	</div>
-	<div class="mySlides fade">
-		<div class="numbertext">3 / 3</div>
-		<img src="../images/recommended locations/portugal-nazare-estremadura.jpg" alt="Nazare Estremadura"/>
-		<h3 class="slideshow title">Nazar&#233; Estremadura, Portugal</h3>
-		<p class="slideshow-text">Nazar&#233; is a town on the Atlantic coast of Portugal, located in Estremadura.
-		It is known for its beatiful beaches, world-class surfing, and traditional fishing heritage.
-		The main beach in Nazar&#233; is Praia da Nazar&#233;, which is home to the famous Nazar&#233; Canyon that creates some of the biggest waves in the world.
-		In addition to its beaches, Nazar&#233; also has a historic center with charming narrow streets, traditional houses and an iconic lighthouse that offers stunning views of the coastline. 
-		</p>
-	</div>
-	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-	<a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<div style="text-align:center">
-	<span class="dot" onclick="currentSlide(1)"></span>
-	<span class="dot" onclick="currentSlide(2)"></span>
-	<span class="dot" onclick="currentSlide(3)"></span>
-</div>
-<br>
+	<div class="container">
+		<div class="visited section">
+			<h1 class="visited title">Recommended Places To Visit This Month</h1>
+			<div class="slideshow-container" style="height: 85vh;">
+				<div class="slideshow-slides2">
+					<div class="numbertext">1 / 2</div>
+					<img src="../images/recommended locations/peru-machu-picchu.jpg" alt="The Citadel of Machu Picchu"/>
+					<h3 class="slideshow title">Machu Picchu, Peru</h3>
+				</div>
+				<div class="slideshow-slides2">
+					<div class="numbertext">2 / 2</div>
+					<img src="../images/recommended locations/spain-costa-del-sol.jpg" alt="Costa del Sol Beach"/>
+					<h3 class="slideshow title">Costa del Sol Beaches, Spain</h3>
+				</div>
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+			</div>
+			<div class="slideshow-dots">
+				<span class="dot" onclick="currentSlide(1)"></span>
+				<span class="dot" onclick="currentSlide(2)"></span>
+				<span class="dot" onclick="currentSlide(3)"></span>
+			</div>
 		</div>
 	</div>
 	<div class="container">
@@ -278,18 +317,11 @@ if(isset($_POST['submit']))  //if submit was pushed
 			<h1 id="about" class="about title">About</h1>
 			<p class="about content">
 				In this website we are trying to simulate an airline booking system in a simple way.<br>
-			Our goal is making this website accessable and friendly with any user,<br>
-			it will be a big step in progressing the technology and making it easier for everyone.<br>
+				Our goal is making this website accessable and friendly with any user,<br>
+				it will be a big step in progressing the technology and making it easier for everyone.<br>
 			</p>
 		</div>
 	</div>
-	</div class="back-to-top">
-		<a href="#top" class="back-to-top-link"><i class="fa fa-angle-double-up" aria-hidden="true"></i> Back to Top</a>
-		<!--<button id="btn-back-to-top"><i class="fa fa-angle-double-up" aria-hidden="true"></i> Back to Top</button>-->
-	</div>
-	<script>
-		var javacool=JSON.parse('<?php echo $javacool;?>');
-		console.log(javacool);
-	</script>
+	<a href="#top" class="back-to-top-link"><i class="fa fa-angle-double-up" aria-hidden="true"></i> Back to Top</a>
 </body>
 </html>
