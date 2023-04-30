@@ -141,7 +141,7 @@ if(isset($_POST['submit']))  //if submit was pushed
 					echo '<li><a href="tickets.php"><i class="fa fa-book" aria-hidden="true"></i> Booked Tickets</a></li>';
 				}
 				?>
-				<li><a href="feedback.php"><i class="fa fa-phone" aria-hidden="true"></i> Contact us</a></li>
+				<li><a href="feedback.php"><i class="fa fa-envelope" aria-hidden="true"></i> Contact us</a></li>
 				<li><a href="#about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
 				<?php 
 				if(isset($user))
